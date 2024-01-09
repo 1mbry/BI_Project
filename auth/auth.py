@@ -11,9 +11,9 @@ from db.update_db import update_itemLedgerEntries, update_items
 base_url = 'http://localhost:7048/BC210'
 
 # Le mie credenziali
-username = 'windows_user' 
-password = 'windows_password'
-domain = 'windows_domain'
+username = 'robert' 
+password = 'IMbrea251@'
+domain = 'DESKTOP-ROBERT'
 
 headers = {
     'Content-Type': 'application/json',
@@ -73,12 +73,3 @@ def main():
     conn = establish_db_connection('localhost', 'root', '', 'laboratorio')
     update_database_with_api_data(base_url, username, password, domain, endpoints, conn)
     conn.close()
-
-# Eseguo il file auth.py con chiamate a update_db.py    
-
-
-
-
-
-
-        
