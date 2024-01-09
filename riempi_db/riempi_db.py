@@ -2,41 +2,35 @@ import mysql.connector
 
 def update_itemLedgerEntries(conn, result):
     try:
-            cursor = conn.cursor()
+        cursor = conn.cursor()
 
-            for data in result['value']:
-                # Rimuovere le colonne indesiderate dal dizionario data
-                excluded_columns = ["@odata.etag", "SystemId"]
-                data = {key: value for key, value in data.items() if key not in excluded_columns}
-                
-                cursor.execute("""
+        for data in result['value']:
+            excluded_columns = ["@odata.etag"]
+            data = {key: value for key, value in data.items() if key not in excluded_columns}
+
+            cursor.execute("""
                 INSERT INTO item_ledger 
-                (entry_no, item_no, posting_date, entry_type, source_no, document_no, description, quantity,
-                sales_amount_actual, cost_amount_actual, last_modified_date_time) 
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
+                (entry_no, entry_type, item_no, document_no, quantity, posting_date, cost_amount_actual) 
+                VALUES (%s, %s, %s, %s, %s, %s, %s) 
                 ON DUPLICATE KEY UPDATE 
-                item_no = VALUES(item_no), posting_date = VALUES(posting_date), entry_type = VALUES(entry_type), 
-                source_no = VALUES(source_no), document_no = VALUES(document_no), description = VALUES(description), 
-                quantity = VALUES(quantity), sales_amount_actual = VALUES(sales_amount_actual),
-                cost_amount_actual = VALUES(cost_amount_actual), last_modified_date_time = VALUES(last_modified_date_time)
-            """,
-            (data['entryNumber'], data['itemNumber'], data['postingDate'], data['entryType'],
-            data['sourceNumber'], data['documentNumber'], data['description'], data['quantity'],
-            data['salesAmountActual'], data['costAmountActual'], data['lastModifiedDateTime']))
+                entry_type = VALUES(entry_type), item_no = VALUES(item_no), 
+                document_no = VALUES(document_no), quantity = VALUES(quantity), 
+                posting_date = VALUES(posting_date), cost_amount_actual = VALUES(cost_amount_actual)
+            """, (
+                data['entry_no'], data['entry_type'], data['item_no'], data['document_no'],
+                data['quantity'], data['posting_date'], data['cost_amount_actual']
+            ))
 
-            # Commit delle modifiche
-            conn.commit()
+        conn.commit()
 
     except mysql.connector.Error as err:
-        print(f"Errore durante la connessione al database: {err}")
+        print(f"Error connecting to the database: {err}")
 
     except Exception as e:
-        print(f"Si è verificato un errore: {e}")
+        print(f"An error occurred: {e}")
 
     finally:
-        # Chiusura della connessione al database
         cursor.close()
-
 
 def update_capacityledgerentries(conn, result):
     try:
@@ -116,7 +110,6 @@ def update_productionorders(conn, result):
     finally:
         cursor.close()
 
-
 def update_machinecenters(conn, result):
     try:
         cursor = conn.cursor()
@@ -145,53 +138,32 @@ def update_machinecenters(conn, result):
     finally:
         cursor.close()
 
-
 def update_items(conn, result):
     try:
         cursor = conn.cursor()
 
         for data in result['value']:
-            excluded_columns = ["@odata.etag", "SystemId"]
-            data = {key: value for key, value in data.items() if key not in excluded_columns}
+            excluded_columns = ["@odata.etag"]
+            data = {key.lower(): value for key, value in data.items() if key.lower() not in excluded_columns}
 
             cursor.execute("""
-                INSERT INTO items (number, displayName, type, itemCategoryId, itemCategoryCode, blocked,
-                gtin, inventory, unitPrice, priceIncludesTax, unitCost, taxGroupId, taxGroupCode,
-                baseUnitOfMeasureId, baseUnitOfMeasureCode, generalProductPostingGroupId,
-                generalProductPostingGroupCode, inventoryPostingGroupId, inventoryPostingGroupCode,
-                lastModifiedDateTime)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                ON DUPLICATE KEY UPDATE
-                number = VALUES(number), displayName = VALUES(displayName), type = VALUES(type),
-                itemCategoryId = VALUES(itemCategoryId), itemCategoryCode = VALUES(itemCategoryCode),
-                blocked = VALUES(blocked), gtin = VALUES(gtin), inventory = VALUES(inventory),
-                unitPrice = VALUES(unitPrice), priceIncludesTax = VALUES(priceIncludesTax),
-                unitCost = VALUES(unitCost), taxGroupId = VALUES(taxGroupId), taxGroupCode = VALUES(taxGroupCode),
-                baseUnitOfMeasureId = VALUES(baseUnitOfMeasureId), baseUnitOfMeasureCode = VALUES(baseUnitOfMeasureCode),
-                generalProductPostingGroupId = VALUES(generalProductPostingGroupId),
-                generalProductPostingGroupCode = VALUES(generalProductPostingGroupCode),
-                inventoryPostingGroupId = VALUES(inventoryPostingGroupId),
-                inventoryPostingGroupCode = VALUES(inventoryPostingGroupCode),
-                lastModifiedDateTime = VALUES(lastModifiedDateTime)
+                INSERT INTO items (no, description, routing_no, production_bom_no)
+                VALUES (%s, %s, %s, %s)
+                ON DUPLICATE KEY UPDATE 
+                description = VALUES(description), routing_no = VALUES(routing_no), production_bom_no = VALUES(production_bom_no)
             """, (
-                data['number'], data['displayName'], data['type'], data['itemCategoryId'],
-                data['itemCategoryCode'], data['blocked'], data['gtin'], data['inventory'], data['unitPrice'],
-                data['priceIncludesTax'], data['unitCost'], data['taxGroupId'], data['taxGroupCode'],
-                data['baseUnitOfMeasureId'], data['baseUnitOfMeasureCode'], data['generalProductPostingGroupId'],
-                data['generalProductPostingGroupCode'], data['inventoryPostingGroupId'],
-                data['inventoryPostingGroupCode'], data['lastModifiedDateTime']
+                data['no'], data['description'], data['routing_no'], data['production_bom_no']
             ))
 
         conn.commit()
 
     except mysql.connector.Error as err:
-        print(f"Errore durante la connessione al database: {err}")
+        print(f"Error connecting to the database: {err}")
 
     except Exception as e:
-        print(f"Si è verificato un errore: {e}")
+        print(f"An error occurred: {e}")
 
     finally:
-        # Chiusura della connessione al database
         cursor.close()
 
 def update_prodorderroutinglines(conn, result):

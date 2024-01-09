@@ -1,0 +1,37 @@
+{
+    "@odata.context": "http://localhost:7048/BC210/api/provision/production/v1.0/$metadata#items",
+    "value": [
+{
+            "@odata.etag": "W/\"JzE5OzQ2NDMyNDQ4MjgyNDQ4NzkxMjYxOzAwOyc=\"",
+            "id": "72439777-e73a-ed11-bbaf-6045bd8e5a17",
+            "no": "70010",
+            "Description": "Anta in legno",
+            "routing_no": "",
+            "production_bom_no": ""
+        },
+        {
+            "@odata.etag": "W/\"JzE5OzQ2NDIzNzYwNjA4NDY3MDAyNzYxOzAwOyc=\"",
+            "id": "75439777-e73a-ed11-bbaf-6045bd8e5a17",
+            "no": "70011",
+            "Description": "Anta in vetro",
+            "routing_no": "",
+            "production_bom_no": ""
+        },
+        {
+            "@odata.etag": "W/\"JzE5OzQ2NDE3MDk3NDQxOTUwNTM2ODIxOzAwOyc=\"",
+            "id": "77439777-e73a-ed11-bbaf-6045bd8e5a17",
+            "no": "70040",
+            "Description": "Cassetto",
+            "routing_no": "",
+            "production_bom_no": ""
+        },
+        {
+            "@odata.etag": "W/\"JzE5OzQ2NDU3MDkyNzEwODEwOTU0NDExOzAwOyc=\"",
+            "id": "79439777-e73a-ed11-bbaf-6045bd8e5a17",
+            "no": "70041",
+            "Description": "Scaffale",
+            "routing_no": "",
+            "production_bom_no": ""
+        }
+    ]
+}
