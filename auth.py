@@ -1,5 +1,6 @@
 # Python version 3.11.0
 # requests-ntlm 1.1.0
+# mysql-connector-python 8.2.0
 
 import requests
 import mysql.connector
@@ -72,6 +73,8 @@ def main():
     conn = establish_db_connection('localhost', 'root', '', 'laboratorio')
     update_database_with_api_data(base_url, username, password, domain, endpoints, conn)
     conn.close()
+
+# Eseguo il file auth.py con chiamate a update_db.py    
 main()
 
 
