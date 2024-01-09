@@ -1,2 +1,3 @@
 # BI_Project
-Project using Metabase, a script in python, Business Centrall on Premise and Power Apps. For the server i use SQL Server and for the data warehouse i use MySQL
+I am working on a BI project that involves utilizing Metabase alongside a Python script, integrating Business Central On-Premise and Power Apps.
+The server setup includes SQL Server, while for the data warehouse, I am utilizing MySQL.
