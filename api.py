@@ -10,9 +10,9 @@ from db.update_db import update_itemLedgerEntries, update_items
 base_url = 'http://localhost:7048/BC210'
 
 # Le mie credenziali
-username = 'robert' 
-password = 'IMbrea251@'
-domain = 'DESKTOP-ROBERT'
+username = 'windows_user' 
+password = 'windows_password'
+domain = 'windows_domain'
 
 headers = {
     'Content-Type': 'application/json',
