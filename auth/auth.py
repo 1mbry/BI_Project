@@ -1,7 +1,3 @@
-# Python version 3.11.0
-# requests-ntlm 1.1.0
-# mysql-connector-python 8.2.0
-
 import requests
 from requests_ntlm import HttpNtlmAuth
 from db.db import (

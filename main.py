@@ -1,3 +1,6 @@
+# Python version 3.11.0
+# requests-ntlm 1.1.0
+# mysql-connector-python 8.2.0
 # schedule 1.2.1
 
 import schedule
@@ -40,4 +43,4 @@ def main():
         stop_schedule(None, None)
 
 if __name__ == "__main__":
-    main_auth()
+    main()
