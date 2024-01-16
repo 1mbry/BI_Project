@@ -1,9 +1,0 @@
-creo un file main dove faccio partire il programma soltanto quindi richiamo solo i processi degli altri file.
-nel file main metto uno schedule.
-
-
-main.py -> faccio partire tutte le funzioni di auth e update_db
-auth - auth.py
-db - update_db.py -> funzioni che fanno l'update delle tabelle
-   - db.py -> creo il database (primo a far partire)
-
