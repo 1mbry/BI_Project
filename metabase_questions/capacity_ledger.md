@@ -1,5 +1,43 @@
 Capacity ledger: 
 Libro contabile utilizzato per monitorare e gestire la capacità operativa di risorse all'interno di un'azienda. Questo tipo di registro è spesso impiegato in contesti di produzione o di gestione delle risorse aziendali per tenere traccia delle attività legate alla capacità di produzione e operativa.
+
+    id: Identificatore univoco per ogni riga nella tabella, solitamente utilizzato come chiave primaria.
+
+    entry_no: Numero associato a una specifica registrazione o transazione.
+
+    order_type: Tipo di ordine associato all'operazione.
+
+    type: Tipo specifico di operazione o attività.
+
+    no: Numero univoco associato all'operazione o all'articolo.
+
+    document_no: Numero di documento associato all'operazione.
+
+    item_no: Numero univoco associato all'articolo coinvolto nell'operazione.
+
+    routing_no: Numero di instradamento o codice associato al percorso di produzione.
+
+    quantity: Quantità totale pianificata o richiesta.
+
+    output_quantity: Quantità effettiva prodotta.
+
+    scrap_quantity: Quantità scartata durante l'operazione.
+
+    direct_cost: Costo diretto associato all'operazione.
+
+    overhead_cost: Costo indiretto associato all'operazione.
+
+    run_time: Tempo di esecuzione dell'operazione.
+
+    setup_time: Tempo necessario per la preparazione dell'operazione.
+
+    starting_time: Data e ora di inizio dell'operazione.
+
+    ending_time: Data e ora di fine dell'operazione.
+
+    stop_time: Data e ora di arresto dell'operazione.
+
+    posting_date: Data in cui l'operazione è stata registrata.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------
