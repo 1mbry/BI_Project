@@ -5,7 +5,6 @@
 
 import schedule
 import time
-import signal
 from auth.auth import main as main_auth
 
 # Flag per indicare se i lavori devono essere interrotti
@@ -16,7 +15,7 @@ def run_jobs():
     main_auth()
 
 # Metodo per stoppare la schedule
-def stop_schedule(signum, frame):
+def stop_schedule():
     global stop_jobs
     stop_jobs = True
     # Cancella le esecuzioni di run_jobs
@@ -40,7 +39,7 @@ def main():
     # Inserimento di un comando da tastiera (CTRL + C) per interrompere l'applicazione
     except KeyboardInterrupt:
         print("Programma interrotto dall'utente.")
-        stop_schedule(None, None)
+        stop_schedule()
 
 if __name__ == "__main__":
     main()
