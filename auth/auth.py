@@ -21,9 +21,9 @@ from db.update_db import (
 base_url = 'http://localhost:7048/BC210'
 
 # Le mie credenziali
-username = 'ICTS22-24.319' 
-password = 'Service2024!'
-domain = 'STUDENTI'
+username = 'windows_username' 
+password = 'windows_password'
+domain = 'windows_domain'
 
 # Specifico che come output voglio un json
 headers = {
